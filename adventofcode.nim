@@ -18,14 +18,14 @@ proc parseHTML(htmlString: string, day: string) : string {.raises: [ValueError].
     var processedName: seq[string] = @["day" & day]
 
     for v in challengeName.items:
-      processedName.add(v.toLower()[0 .. 3])
+      processedName.add(v.toLower()[0 .. 4])
 
     result = processedName.join("-")
 
 try:
   let arg: string = commandLineParams()[0]
   echo fmt"Generating Rust Project for Advent of Code 2020, Day {arg}:{'\n'}"
- 
+
   let aocURL = "http://adventofcode.com/2020/day/" & arg
 
   let client = newHttpClient()
